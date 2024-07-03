@@ -6,10 +6,6 @@ const Recaptcha = () => {
     fullname: "",
     email: "",
     mobileNumber: "",
-    country: "",
-    role: "",
-    gender: "",
-    password: "",
   };
 
   const [createUserForm, setCreateUserForm] = useState(createUserFormSchema);
