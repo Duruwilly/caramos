@@ -16,7 +16,7 @@ const Recaptcha = () => {
 
   const createUser = async (e) => {
     e.preventDefault();
-    const url = `localhost:8080/api/enrollment`;
+    const url = `https://vaa-server.onrender.com/api/enrollment`;
     try {
       let res = await axios.post(url, createUserForm, {});
       console.log(res);
