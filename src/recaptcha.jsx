@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const Recaptcha = () => {
   const createUserFormSchema = {
@@ -11,12 +11,14 @@ const Recaptcha = () => {
 
   const [createUserForm, setCreateUserForm] = useState(createUserFormSchema);
 
-  const handleRecaptcha = (token) => {
-    setCreateUserForm((state) => ({
-      ...state,
-      recaptchaToken: token,
-    }));
-  };
+  useEffect(() => {
+    window.handleRecaptcha = (token) => {
+      setCreateUserForm((state) => ({
+        ...state,
+        recaptchaToken: token,
+      }));
+    };
+  }, [])
 
   const createUser = async (e) => {
     e.preventDefault();
