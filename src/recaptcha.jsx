@@ -6,9 +6,17 @@ const Recaptcha = () => {
     fullname: "",
     email: "",
     mobileNumber: "",
+    recaptchaToken: "", // Add this
   };
 
   const [createUserForm, setCreateUserForm] = useState(createUserFormSchema);
+
+  const handleRecaptcha = (token) => {
+    setCreateUserForm((state) => ({
+      ...state,
+      recaptchaToken: token,
+    }));
+  };
 
   const createUser = async (e) => {
     e.preventDefault();
@@ -19,7 +27,7 @@ const Recaptcha = () => {
       if (res.data.status === "success") {
       }
     } catch (error) {
-        console.log("error", error);
+      console.log("error", error);
     }
   };
 
@@ -84,10 +92,14 @@ const Recaptcha = () => {
               />
             </div>
           </div>
-      
         </div>
 
-        <div class="g-recaptcha" data-sitekey="6LcVKAcqAAAAALOopK1BwC-0WyfC9F3aR60Rwa8Q"></div>
+        <div
+          className="g-recaptcha"
+          data-sitekey="6LcVKAcqAAAAALOopK1BwC-0WyfC9F3aR60Rwa8Q"
+          data-callback="handleRecaptcha"
+        ></div>
+
         <div className="col-md-2">
           <div className="mb-3">
             <button className="btn">Submit</button>
